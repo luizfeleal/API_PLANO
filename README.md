@@ -19,11 +19,6 @@ API desenvolvida para vaga de desenvolvedor Back-end
 - Css
 # Rodando a aplicação
 
-## 1. É necessário possuir as seguintes dependências:
-
-- Php 5 ou superior
-- Composer
-
 ### Caso tenha o composer instalado, utilize *coposer update*.
 
 # informações adicionais
