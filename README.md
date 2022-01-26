@@ -19,7 +19,7 @@ API desenvolvida para vaga de desenvolvedor Back-end
 - Css
 # Rodando a aplicação
 
-### Caso tenha o composer instalado, utilize *coposer update*.
+### utilize *coposer update* no terminal dentro da pasta, para que esteja tudo atualizado e instalado.
 
 # informações adicionais
 ### Os arquivos do front estão localizados na pasta www
