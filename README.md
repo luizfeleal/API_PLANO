@@ -22,4 +22,4 @@ API desenvolvida para vaga de desenvolvedor Back-end
 ### Caso tenha o composer instalado, utilize *coposer update*.
 
 # informações adicionais
-Os arquivos do front estão localizados na pasta www
+### Os arquivos do front estão localizados na pasta www
