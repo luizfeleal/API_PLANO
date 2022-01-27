@@ -5,14 +5,12 @@
 
     class User
     {
-        public static function select($id) 
-        {
-                    throw new \Exception('Método GET não disponível');
-        }
 
+        // Função que é executada quando o método da requuisção é POST.
         public static function insert($data)
         {
 
+            // Instanciando variáveis para leitura dos arquivos Json.
             $prices = json_decode(file_get_contents("../prices.json"));
 
             $plans = json_decode(file_get_contents("../plans.json"));
@@ -21,18 +19,21 @@
             
             $req = json_decode(file_get_contents('php://input'));
 
+            // Variavel que verifica se o código do registo de plano escolhido pelo beneficiário, existe no arquivo Json.
             $codigoArray = false;
 
             // Cria loop para percorrer os planos e verificar se há um código correspondente ao código inserido pelo cliente.
             for($p = 0; $p < count($plans); $p++){
 
                 if($req->registro === $plans[$p]->registro){
+                        // Seta o valor da variável "codigo" com o valor do plano.
                         $codigo = $plans[$p]->codigo;
                         // Caso tenha um código correspondente, troca o valor da variável para true.
                         $codigoArray = true;
                 }
             }
 
+            // Caso o código inserido pelo usuário seja inválido, retorna um erro.
             if($codigoArray == false){
                 throw new \Exception('Nenhum registro encontrado!');
             }
@@ -103,6 +104,7 @@
                     }
                     if( $req->qtd_beneficiarios >= $totalT[(count($totalT) - 1)]->minimo_vidas){
 
+                    // Adiciona ao array as informações do preço do plano que obedece as condições acima.
                     array_push($totalC, $totalT[(count($totalT) - 1)]);
                     }
                 }
@@ -159,8 +161,7 @@
                 // Adiciona o valor ao array criado mais acima.
                 array_push($valorIndividual, $valor);
                
-                // Lê o arquivo, caso exista.
-
+                // Chama a função da classe Write, para a escritaa dos dados no respectivo arquivo Json.
                 Write::write($input, "../beneficiarios.json");
 
                 //Adiciona o valor da soma do plano de cada beneficiário e adiciona ao array.
@@ -169,6 +170,8 @@
                 );
 
                 array_push($input['beneficiarios'], $totalPlanos);
+
+                // Chama a função da classe Write, para a escritaa dos dados no respectivo arquivo Json.
                 Write::write($input, "../proposta.json");
 
                 //Retorna o array contendo a idade do beneficiário, o valor respectivo a idade e a soma do preço de cada beneficiário.
