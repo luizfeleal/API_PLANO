@@ -5,18 +5,10 @@
 
     class UserService
     {
-        public function get($id = null)
-        {
-            if($id) {
-                return User::select($id);
-            } else {
-                return User::selectAll();
-            }
-            return $_GET;
-        }
         public function post()
         {
             $data = $_POST;
+            //Retorna o valor da execução da função chamada, localizada na class user.
             return User::insert($data);
         }
     }
